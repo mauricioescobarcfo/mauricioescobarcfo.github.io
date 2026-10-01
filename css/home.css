@@ -1,0 +1,904 @@
+/*
+  Mauricio Escobar — home.
+  Estructura del portafolio de barra lateral; piel del Manual de Marca MEB.
+  Cara Clara (papel cálido + ultramar + ámbar estructural). Mundo claro único,
+  pintado explícitamente: es decisión, no omisión. El verde contable salió —
+  el manual lo reserva para "favorable" en tableros.
+*/
+:root{
+  color-scheme: light;
+  --paper:#FCF9F2;
+  --panel:#F1E8D6;
+  --ink:#14110C;
+  --ink-soft:#6E675C;
+  --ink-mute:#9C9280;
+  --line:#DCCFB4;
+  --line-strong:#C6BB98;
+  --accent:#1400C8;
+  --accent-soft:#E8E5FF;
+  --amber:#B5822A;
+  --amber-soft:#F7EEDB;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+  /* --- Acabado (DESIGN.md 9). El lienzo BAJA, la tarjeta no sube (9.7). --- */
+  --lienzo:#F6F1E4;
+  --ease:cubic-bezier(.2,.7,.3,1);
+  --dur-color:160ms; --dur-forma:220ms; --dur-dato:320ms;
+  --sombra-1:0 1px 2px rgba(20,17,12,.05);
+  --sombra-2:0 2px 4px rgba(20,17,12,.05), 0 8px 20px rgba(20,17,12,.07);
+  --sombra-3:0 4px 8px rgba(20,17,12,.06), 0 16px 40px rgba(20,17,12,.10);
+  --radio-tarjeta:14px; --radio-control:8px;
+  /* Alias por rol (DESIGN.md). Canonicos para agentes; los de arriba son legado. */
+  --fondo:var(--paper); --filete:var(--line);
+  --texto:var(--ink); --texto-suave:var(--ink-soft);
+  --acento:var(--accent); --estructura:var(--amber);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--lienzo); color:var(--ink);
+  font-family:'Inter',-apple-system,'Segoe UI',sans-serif;
+  font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%; display:block;}
+a{color:inherit;}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px;}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace; font-variant-numeric:tabular-nums;}
+
+.shell{
+  max-width:1280px; margin:0 auto; padding:0 2rem;
+  display:grid; grid-template-columns:330px 1fr; gap:4.5rem; align-items:start;
+}
+
+/* ============ BARRA LATERAL ============ */
+.sidebar{
+  position:sticky; top:0; height:100vh; padding:3.25rem 0 2rem;
+  display:flex; flex-direction:column; justify-content:space-between; gap:1.5rem;
+  overflow-y:auto; scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent;
+}
+
+/* Membrete: retrato AL LADO del nombre, nombre en una sola línea. */
+.letterhead{border-top:2px solid var(--ink); padding-top:1rem;}
+.letterhead .kicker{
+  font-family:'JetBrains Mono',ui-monospace,monospace; font-size:.66rem;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--amber); margin:0 0 .85rem;
+}
+.namerow{display:flex; align-items:center; gap:.95rem;}
+.portrait{
+  width:78px; height:78px; flex:0 0 78px; border-radius:50%; overflow:hidden;
+  border:1px solid var(--line-strong); background:var(--panel);
+}
+.portrait img{width:100%; height:100%; object-fit:cover; object-position:center 16%;}
+.namerow h1{
+  font-family:'Archivo',system-ui,sans-serif; font-weight:700;
+  color:var(--accent);
+  /* Archivo es condensada: el nombre completo entra en una línea sin encogerse. */
+  font-size:clamp(1.38rem,2vw,1.64rem); line-height:1.05; letter-spacing:-.015em;
+  margin:0; white-space:nowrap;
+}
+.namerow .role{
+  font-family:'JetBrains Mono',ui-monospace,monospace; font-size:.7rem;
+  color:var(--ink-soft); letter-spacing:.02em; margin:.34rem 0 0;
+}
+.bio{
+  color:var(--ink-soft); font-size:.92rem; max-width:32ch;
+  margin:1.15rem 0 0; padding-bottom:1.15rem; border-bottom:1px solid var(--line-strong);
+}
+
+/* La barra se compacta por escalones antes de desbordar, en vez de aparecer
+   con scroll interno. Los cuatro accesos apilados ocupan ~90px más que la
+   rejilla 2x2 que había antes, así que el primer escalón entra ya a 1010px:
+   por debajo de eso una barra sin compactar se desborda. */
+@media (min-width:981px) and (max-height:1010px){
+  .sidebar{padding:2.5rem 0 1.75rem;}
+  .actions-row{gap:.2rem;}
+  .act{min-height:40px; font-size:.76rem;}
+  .act .ic{width:32px; height:32px; flex-basis:32px;}
+}
+@media (min-width:981px) and (max-height:960px){
+  .sidebar{padding:2rem 0 1.5rem;}
+  .bio{font-size:.86rem; margin-top:.9rem; padding-bottom:.9rem;}
+  nav.jump{margin-top:1.35rem;}
+  nav.jump a{padding-top:.46rem; padding-bottom:.46rem;}
+  .actions{padding-top:.85rem;}
+}
+/* La bio es lo primero que sobra: el perfil la repite completa dos líneas
+   más abajo. Antes que esconder los enlaces a las otras páginas, sale ella. */
+@media (min-width:981px) and (max-height:900px){
+  .bio{display:none;}
+  .letterhead{padding-top:.75rem;}
+  .namerow{padding-bottom:1rem; border-bottom:1px solid var(--line-strong);}
+  nav.jump{margin-top:1.1rem;}
+}
+@media (min-width:981px) and (max-height:800px){
+  .sidebar{padding:1.5rem 0 1.25rem;}
+  .bio{display:none;}
+  .portrait{width:52px; height:52px; flex-basis:52px;}
+  nav.jump{margin-top:1.1rem;}
+  nav.jump a{padding-top:.42rem; padding-bottom:.42rem; font-size:.72rem;}
+}
+
+/* Menú: el filete crece con transform (GPU), no con width (layout). */
+nav.jump{margin-top:2rem;}
+nav.jump ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.15rem;}
+nav.jump a{
+  text-decoration:none; display:flex; align-items:center; gap:.8rem;
+  font-family:'Archivo',system-ui,sans-serif;
+  font-size:.76rem; font-weight:600; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--ink-soft); padding:.62rem .5rem .62rem 0; border-radius:3px;
+  transition:color 150ms ease, background-color 150ms ease, transform 200ms var(--ease-out);
+}
+nav.jump .rail{
+  display:block; width:3.4rem; height:1px; background:var(--ink-mute); flex:0 0 3.4rem;
+  transform:scaleX(.588); transform-origin:left center;
+  transition:transform 220ms var(--ease-out), background-color 200ms ease;
+}
+nav.jump .num{
+  font-family:'JetBrains Mono',ui-monospace,monospace; font-size:.62rem;
+  color:var(--ink-mute); transition:color 150ms ease;
+}
+@media (hover:hover) and (pointer:fine){
+  nav.jump a:hover{color:var(--ink);}
+  nav.jump a:hover .rail{transform:scaleX(1); background:var(--amber);}
+}
+nav.jump a:focus-visible{color:var(--ink);}
+nav.jump a:focus-visible .rail{transform:scaleX(1); background:var(--amber);}
+nav.jump a:active{transform:scale(.98);}
+nav.jump a.active{color:var(--accent); background:var(--accent-soft);padding-left:.5rem;}
+nav.jump a.active .rail{transform:scaleX(1); background:var(--accent);}
+nav.jump a.active .num{color:var(--accent);}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:.01ms !important; transition-duration:.01ms !important;}
+}
+
+/* Fila de acciones */
+.actions{display:flex; flex-direction:column; gap:.9rem; padding-top:1.1rem; border-top:1px solid var(--line-strong);}
+.actions-row{display:flex; flex-direction:column; gap:.35rem;}
+.act{
+  display:flex; align-items:center; gap:.6rem; min-height:44px;
+  text-decoration:none; color:var(--ink-soft);
+  font-family:'Archivo',system-ui,sans-serif; font-size:.78rem; font-weight:600;
+  letter-spacing:.01em;
+  transition:color 150ms ease, transform 160ms var(--ease-out);
+}
+.act .ic{
+  display:grid; place-items:center; width:36px; height:36px; flex:0 0 36px;
+  border-radius:50%; border:1px solid var(--line-strong); background:var(--paper);
+  transition:background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+.act .ic svg{width:16px; height:16px;}
+@media (hover:hover) and (pointer:fine){
+  .act:hover{color:var(--accent);}
+  .act:hover .ic{background:var(--accent); border-color:var(--accent); color:var(--paper);}
+}
+.act:focus-visible .ic{background:var(--accent); border-color:var(--accent); color:var(--paper);}
+.act:active{transform:scale(.97);}
+/* La HV es descarga, no contacto: mismo tamaño, el ámbar la separa. */
+.act-cv .ic{border-color:var(--amber); background:var(--amber-soft); color:var(--amber);}
+@media (hover:hover) and (pointer:fine){
+  .act-cv:hover{color:var(--ink);}
+  .act-cv:hover .ic{background:var(--amber); border-color:var(--amber); color:var(--paper);}
+}
+
+/* ============ COLUMNA PRINCIPAL ============ */
+main{padding:3.25rem 0 0;}
+section{padding-bottom:4.5rem; scroll-margin-top:2rem;}
+.sec-head{display:flex; align-items:baseline; gap:.9rem; border-bottom:2px solid var(--amber); padding-bottom:.55rem; margin-bottom:1.6rem;}
+.sec-head .n{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:.72rem; color:var(--amber); font-weight:700;}
+.sec-head h2{font-family:'Archivo',system-ui,sans-serif; font-weight:700; font-size:1.32rem; letter-spacing:.01em; margin:0; text-transform:uppercase;}
+.sec-head .more{margin-left:auto; font-family:'Archivo',sans-serif; font-size:.72rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; transition:border-color 150ms ease;}
+.sec-head .more:hover{border-color:var(--accent);}
+
+/* Ninguna palabra se parte: hyphens:none en todo el sitio.
+   JUSTIFICADO por decisión de Mauricio (2026-09-01). Se documenta el costo para
+   que nadie lo revierta creyendo que fue un descuido: justificar SIN partición
+   de palabras abre ríos blancos, y en español más que en inglés porque las
+   palabras son largas. Se mitiga con una medida ancha (74ch): a más caracteres
+   por línea, menos se estiran los espacios. Los textos cortos —etiquetas de
+   cifras, pies, formación— siguen en bandera derecha: justificar dos líneas
+   deja la primera desgarrada. */
+p{max-width:74ch; text-align:justify; hyphens:none; -webkit-hyphens:none; text-wrap:pretty;}
+.row p, .card p, .contact-cta p, .bio, .win{text-align:justify; hyphens:none; -webkit-hyphens:none;}
+.figures span, .row-brief p, .edu p{text-align:left; hyphens:none;}
+.lede{font-size:1.02rem;}
+.lede strong{font-weight:600;}
+
+/* Cifras del perfil */
+.figures{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin:0 0 1.8rem;}
+.figures div{background:var(--paper); padding:.95rem 1rem;}
+.figures b{display:block; font-family:'JetBrains Mono',ui-monospace,monospace; font-weight:700; font-size:1.28rem; line-height:1; font-variant-numeric:tabular-nums;}
+.figures span{display:block; font-size:.78rem; color:var(--ink); margin-top:.42rem; line-height:1.35; font-weight:500;}
+.figures em{display:block; font-style:normal; font-family:'JetBrains Mono',ui-monospace,monospace;
+  font-size:.66rem; color:var(--ink-mute); margin-top:.3rem; line-height:1.45;}
+.figures b{font-size:1.12rem;}
+
+/* Filas de libro contable — trayectoria y proyectos */
+.ledger{border-top:1px solid var(--line);}
+.row{display:grid; grid-template-columns:96px 1fr; gap:1.35rem; padding:1.35rem 0; border-bottom:1px solid var(--line);}
+.row .when{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:.72rem; color:var(--ink-soft); padding-top:.2rem; line-height:1.7;}
+.row h3{font-family:'Archivo',system-ui,sans-serif; font-weight:700; font-size:1.1rem; margin:0 0 .2rem; letter-spacing:-.01em;}
+.row .org{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:.72rem;
+  letter-spacing:.04em; color:var(--ink-soft); margin:0 0 .6rem;}
+.row p{margin:0 0 .6rem; font-size:.94rem; color:var(--ink-soft);}
+.win{font-size:.9rem; margin:0 0 .7rem; padding-left:.8rem; border-left:2px solid var(--amber);}
+.win b{font-family:'JetBrains Mono',ui-monospace,monospace; font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums;}
+.tags{display:flex; flex-wrap:wrap; gap:.38rem;}
+.tag{font-family:'JetBrains Mono',ui-monospace,monospace; font-size:.66rem; color:var(--ink-soft); border:1px solid var(--line-strong); border-radius:2px; padding:.2rem .5rem;}
+/* Los tres primeros cargos son los que posicionan; estos son contexto.
+   Menos aire y sin etiquetas, para que el peso visual siga la jerarquía real. */
+.row-brief{padding:.85rem 0;}
+.row-brief h3{font-size:.94rem; font-weight:500;}
+.row-brief p{margin:0; font-size:.88rem;}
+
+/* Chips de estado — proyectos */
+.chip{
+  display:inline-flex; align-items:center; gap:.35rem;
+  font-family:'JetBrains Mono',ui-monospace,monospace; font-size:.64rem; font-weight:500;
+  padding:.22rem .55rem; border-radius:2px; white-space:nowrap;
+}
+.chip::before{content:''; width:6px; height:6px; border-radius:50%; background:currentColor;}
+.chip-pub{background:var(--accent-soft); color:var(--accent);}
+.chip-priv{background:var(--panel); color:var(--ink-soft);}
+.chip-soon{background:var(--amber-soft); color:var(--amber);}
+.chip-mod{background:var(--panel); color:var(--amber);}
+.row .thumb{margin-top:.75rem; border:1px solid var(--line); background:var(--panel); aspect-ratio:16/5; overflow:hidden;}
+.row .thumb img{width:100%; height:100%; object-fit:cover; object-position:top left;}
+.row .head-line{display:flex; align-items:center; gap:.7rem; flex-wrap:wrap; margin-bottom:.5rem;}
+.row .head-line h3{margin:0;}
+
+/* Modelos: 3 tarjetas con captura real */
+.models{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.4rem;}
+.card{border:1px solid var(--line); background:var(--paper); display:flex; flex-direction:column;}
+.card .shot{border-bottom:1px solid var(--line); background:var(--panel); aspect-ratio:16/7; overflow:hidden;}
+.card .shot img{width:100%; height:100%; object-fit:cover; object-position:top left;}
+.card .body{padding:1rem 1.1rem 1.15rem; display:flex; flex-direction:column; gap:.55rem; flex:1;}
+.card h3{font-family:'Archivo',sans-serif; font-weight:600; font-size:.96rem; margin:0; letter-spacing:-.005em;}
+.card p{font-size:.87rem; color:var(--ink-soft); margin:0; flex:1;}
+
+/* Formación */
+.edu{border-top:1px solid var(--line);}
+.edu .row{grid-template-columns:96px 1fr; padding:.95rem 0;}
+.edu h3{font-size:.95rem; margin:0 0 .18rem;}
+.edu p{margin:0; font-size:.86rem;}
+.skills{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:1.5rem; margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--line);}
+.langs{margin:0; font-size:.95rem; color:var(--ink); text-align:left;}
+.langs b{font-family:'Archivo',sans-serif; font-weight:700;}
+.skills h4{font-family:'Archivo',sans-serif; font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--amber); margin:0 0 .7rem;}
+
+/* Contacto */
+.contact-cta{background:var(--panel); border-left:3px solid var(--accent); padding:1.4rem 1.6rem; margin-bottom:1.4rem;}
+.contact-cta p{margin:0; max-width:60ch;}
+.contact-cta a{color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent);}
+footer{border-top:1px solid var(--line); padding:1.3rem 0 3rem; font-family:'JetBrains Mono',ui-monospace,monospace; font-size:.68rem; color:var(--ink-mute); line-height:1.7;}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:980px){
+  .shell{grid-template-columns:1fr; gap:0; padding:0 1.25rem;}
+  .sidebar{position:static; height:auto; padding:2.25rem 0 1.5rem;}
+  .bio{max-width:none;}
+  nav.jump{margin-top:1.5rem;}
+  nav.jump ul{flex-direction:row; flex-wrap:wrap; gap:.4rem;}
+  nav.jump a{border:1px solid var(--line-strong); border-radius:999px; padding:.55rem .9rem;}
+  nav.jump .rail{display:none;}
+  nav.jump a.active{padding-left:.9rem;}
+  main{padding-top:1rem;}
+  .figures{grid-template-columns:repeat(2,1fr);}
+  .row{grid-template-columns:1fr; gap:.5rem;}
+  .row .when{padding-top:0;}
+  .namerow h1{white-space:normal;}
+}
+
+/* El bloque .pages enlazaba cfo/productos/proyectos.html. Esas tres páginas se
+   archivaron el 2026-09-04 (Temps-Claude/ARCHIVO-paginas-legacy-off-brand/): vivían
+   fuera de public/, nunca se sirvieron y corrían con el acento viejo #65ABC4. Con
+   ellas se fue su CSS. Si el contenido vuelve, vuelve como sección de esta página. */
+
+/* Sólo para esta vista previa: lo que no puede navegarse fuera del repositorio
+   se ve apagado en vez de dar un 404. No va al sitio. */
+.act.is-off .ic{opacity:.55;}
+.act.is-off{color:var(--ink-mute);}
+
+/* Declaracion de que las cifras de los modelos son de ejemplo. Discreta a
+   proposito: informa sin competir con las tarjetas. */
+.nota-datos{
+  font-size:.86rem; color:var(--ink-soft); max-width:70ch;
+  border-left:2px solid var(--amber); padding:.15rem 0 .15rem .8rem;
+  margin:0 0 1.6rem; text-align:left;
+}
+.nota-datos strong{color:var(--ink); font-weight:600;}
+
+/* ============ SECUENCIA DE MODELO ============
+   Tres cortes del mismo modelo que se funden entre si. El movimiento demuestra
+   el argumento de la tarjeta (la deriva se ve tres meses antes), no decora.
+   Las tres imagenes miden exactamente lo mismo: sin eso el fundido "salta". */
+.secuencia{margin:0; display:flex; flex-direction:column; gap:.7rem;}
+.sec-lienzo{
+  position:relative; border:1px solid var(--line); background:var(--paper);
+  aspect-ratio:1500/528; overflow:hidden;
+}
+.sec-lienzo img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:contain;
+  opacity:0; transition:opacity 620ms var(--ease-out);
+}
+.sec-lienzo img.is-activo{opacity:1;}
+
+.sec-pasos{display:flex; gap:.4rem; flex-wrap:wrap;}
+.sec-pasos button{
+  font-family:'JetBrains Mono',ui-monospace,monospace; font-size:.68rem;
+  letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink-mute); background:transparent;
+  border:1px solid var(--line); border-radius:0;
+  padding:.32rem .7rem; cursor:pointer; min-height:32px;
+  transition:color 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+.sec-pasos button:hover{color:var(--ink); border-color:var(--line-strong);}
+.sec-pasos button.is-activo{
+  color:var(--paper); background:var(--amber); border-color:var(--amber);
+}
+.sec-pasos button:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+
+.secuencia figcaption{
+  font-size:.85rem; color:var(--ink-soft); text-align:left; max-width:70ch;
+}
+.secuencia figcaption strong{color:var(--ink); font-weight:600;}
+
+/* Sin movimiento automatico para quien lo pidio: se ve el ultimo corte y los
+   botones siguen funcionando. */
+@media (prefers-reduced-motion: reduce){
+  .sec-lienzo img{transition:none;}
+}
+
+
+
+/* ============================================================
+   ACABADO — DESIGN.md §9 (aplicado 2026-09-04)
+   El lienzo bajó a #F6F1E4 y la tarjeta se queda en el papel R1 (§9.7).
+   Ese contraste ES el plano: sin él, ninguna sombra sirve.
+   Sombra Y filete: la sombra da el plano, el filete da el borde exacto.
+   ============================================================ */
+
+/* --- Elevación de las cuatro superficies que son tarjeta --- */
+.figures,
+.row .thumb,
+.sec-lienzo,
+.card{
+  background:var(--paper);
+  border:1px solid var(--line-strong);
+  border-radius:var(--radio-tarjeta);
+  box-shadow:var(--sombra-2);
+  overflow:hidden;
+  transition:box-shadow var(--dur-forma) var(--ease),
+             transform var(--dur-forma) var(--ease);
+}
+
+/* La rejilla de cifras dibuja sus filetes con gap sobre fondo; al redondear
+   hay que recortar las celdas o las esquinas se cuadran de nuevo. */
+.figures{gap:1px; background:var(--line-strong);}
+.figures div{background:var(--paper); position:relative;}
+
+/* --- Hover de tarjeta: sube, se eleva, y se dibuja el filete de acento --- */
+.row .thumb,
+.card{position:relative;}
+.row .thumb::after,
+.card::after{
+  content:''; position:absolute; inset:0 0 auto 0; height:3px;
+  background:var(--accent); transform:scaleX(0); transform-origin:left center;
+  transition:transform 280ms var(--ease); pointer-events:none;
+}
+@media (hover:hover) and (pointer:fine){
+  .row .thumb:hover,
+  .card:hover{transform:translateY(-4px); box-shadow:var(--sombra-3);}
+  .row .thumb:hover::after,
+  .card:hover::after{transform:scaleX(1);}
+}
+
+/* --- La pieza destacada: UNA por pantalla (§9.7) ---
+   Es el contacto: la única acción que la página pide. Por eso lleva el filete
+   izquierdo de acento y la sombra-3, y nadie más los lleva. */
+.contact-cta{
+  border-radius:var(--radio-tarjeta);
+  border:1px solid var(--line-strong);
+  border-left:3px solid var(--accent);
+  box-shadow:var(--sombra-3);
+}
+
+/* --- Controles: radio 8, y el activo es acento a bloque (excepción del 3%) --- */
+.sec-pasos button{
+  border-radius:var(--radio-control);
+  border-color:var(--line-strong);
+  background:var(--paper);
+  box-shadow:var(--sombra-1);
+  transition:color var(--dur-color) var(--ease),
+             background-color var(--dur-color) var(--ease),
+             border-color var(--dur-color) var(--ease);
+}
+@media (hover:hover) and (pointer:fine){
+  .sec-pasos button:hover{background:var(--accent-soft); color:var(--accent); border-color:var(--accent-soft);}
+}
+.sec-pasos button.is-activo,
+.sec-pasos button.is-activo:hover{
+  color:var(--paper); background:var(--accent); border-color:var(--accent);
+  box-shadow:var(--sombra-2);
+}
+
+/* --- Pastillas: radio 999 (§9.2) --- */
+.chip,.tag{border-radius:999px;}
+.tag{padding:.22rem .6rem;}
+
+/* --- El menú lateral no es tarjeta: no se eleva, solo redondea su chip --- */
+nav.jump a{border-radius:var(--radio-control);}
+@media (max-width:980px){ nav.jump a{border-radius:999px;} }
+
+/* --- Entrada del dato: 320 ms desde abajo, una sola vez al cargar (§9.3).
+   No es una aparición por scroll — eso está prohibido. --- */
+@keyframes dato-entra{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
+.figures b{animation:dato-entra var(--dur-dato) var(--ease) both;}
+.figures div:nth-child(2) b{animation-delay:60ms;}
+.figures div:nth-child(3) b{animation-delay:120ms;}
+.figures div:nth-child(4) b{animation-delay:180ms;}
+
+/* Obligatorio, no opcional (§9.3). */
+@media (prefers-reduced-motion: reduce){
+  .row .thumb,.card,.contact-cta,.sec-pasos button{transition:none;}
+  .row .thumb:hover,.card:hover{transform:none;}
+  .figures b{animation:none;}
+}
+
+/* La bio del rail sale de la justificación. La decisión de justificar (2026-09-01)
+   se sostiene con medida ancha: a 74ch los espacios apenas se estiran. La bio mide
+   32ch y ahí el mismo ajuste abre ríos blancos de tres espacios. Misma razón por la
+   que las etiquetas de cifras ya iban en bandera: es la medida, no el gusto. */
+.bio{text-align:left;}
+
+/* ============================================================
+   ENLACE A LA PIEZA (2026-09-04)
+   Cada modelo que se puede abrir o descargar lo dice. Va antes de la
+   captura: primero la acción, después la prueba.
+   ============================================================ */
+.abrir{
+  display:inline-flex; align-items:center; gap:.45rem;
+  font-family:'Archivo',system-ui,sans-serif; font-size:.78rem; font-weight:600;
+  letter-spacing:.02em; text-decoration:none; color:var(--accent);
+  padding:.34rem .75rem; margin:.15rem 0 .1rem;
+  border:1px solid var(--accent-soft); border-radius:999px; background:var(--accent-soft);
+  transition:background-color var(--dur-color) var(--ease),
+             border-color var(--dur-color) var(--ease);
+}
+.abrir .flecha{
+  font-size:.9em; line-height:1;
+  transition:transform var(--dur-forma) var(--ease);
+}
+@media (hover:hover) and (pointer:fine){
+  .abrir:hover{background:var(--paper); border-color:var(--accent);}
+  .abrir:hover .flecha{transform:translateX(3px);}
+}
+.abrir:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+/* La descarga no es una visita: el ámbar la separa, igual que la HV del rail. */
+.abrir[download]{color:var(--amber); background:var(--amber-soft); border-color:var(--amber-soft);}
+@media (hover:hover) and (pointer:fine){
+  .abrir[download]:hover{background:var(--paper); border-color:var(--amber);}
+  .abrir[download]:hover .flecha{transform:translateY(2px);}
+}
+.abrir[download] .flecha{transform:rotate(90deg);}
+@media (hover:hover) and (pointer:fine){
+  .abrir[download]:hover .flecha{transform:rotate(90deg) translateX(2px);}
+}
+.abrir[download]:focus-visible{outline-color:var(--amber);}
+@media (prefers-reduced-motion: reduce){ .abrir .flecha{transition:none;} }
+
+/* ============================================================
+   ANCHO Y ESCALA (2026-09-04)
+   La página topaba en 1280px con el cuerpo clavado en 16px: en un monitor
+   grande quedaba una columna estrecha con 300px+ de vacío a cada lado.
+   Ahora el lienzo crece hasta 1560 y el tipo escala con él. Los párrafos
+   siguen capados a 74ch por el §8.2 — el aire extra se lo lleva la columna
+   de las capturas, que es la que gana al verse grande.
+   ============================================================ */
+.shell{max-width:1560px; gap:clamp(3rem,4.2vw,5.5rem);}
+@media (min-width:1200px){
+  .shell{grid-template-columns:clamp(330px,24vw,400px) 1fr; padding:0 clamp(2rem,3.2vw,3.5rem);}
+  body{font-size:clamp(16px,.55vw + 12.6px,18px);}
+  .sec-head h2{font-size:clamp(1.32rem,.5vw + 1.1rem,1.6rem);}
+  .row{grid-template-columns:clamp(96px,8vw,130px) 1fr;}
+  .edu .row{grid-template-columns:clamp(96px,8vw,130px) 1fr;}
+}
+
+/* Las capturas de tablero se muestran ENTERAS.
+   El .thumb normal recorta a 16:5 desde la esquina superior izquierda, que
+   funciona para una hoja de Excel —donde arriba a la izquierda está lo que
+   importa— y arruina un tablero, cuyo argumento está repartido por toda la
+   pantalla. Aquí manda la imagen: sin aspect-ratio y sin cover. */
+.row .thumb-full{aspect-ratio:auto;}
+.row .thumb-full img{height:auto; object-fit:fill;}
+
+/* ============================================================
+   RAIL ULTRAMAR PROFUNDO — decisión de Mauricio, 2026-09-04
+   #181151 es el hue 246 de la marca bajado de brillo: 3,6 veces menos
+   luminoso que #1400C8, con más contraste en todos los textos. El acento
+   pleno NO entra aquí (sobre este fondo da 1,4:1): vive en el chip de papel
+   del ítem activo, invirtiendo, como manda el §8.1.
+   ============================================================ */
+:root{
+  --rail:#181151;
+  --rail-texto:#C0B8FF;        /* ítem inactivo — 9,3:1 */
+  --rail-texto-fuerte:#FCF9F2; /* nombre y hover — 16,1:1 */
+  --rail-texto-activo:#181151; /* SOBRE el chip de papel, no sobre el rail */
+  --rail-filete:rgba(252,249,242,.18);
+  --rail-control:rgba(252,249,242,.12);
+  --rail-ambar:#D6A44E;        /* A3 — 7,5:1. El único otro tono del rail */
+}
+
+@media (min-width:981px){
+  .sidebar{
+    background:var(--rail);
+    border-radius:var(--radio-tarjeta);
+    box-shadow:var(--sombra-2);
+    padding:1.75rem 1.35rem 1.5rem;
+    top:1.5rem; height:auto; max-height:calc(100vh - 3rem);
+    /* El rail recorta, así que su foco de teclado va hacia adentro o se pierde. */
+    overflow:hidden auto;
+  }
+  .sidebar :focus-visible{outline-offset:-2px;}
+}
+@media (max-width:980px){
+  .sidebar{
+    background:var(--rail); border-radius:var(--radio-tarjeta);
+    box-shadow:var(--sombra-2); padding:1.5rem 1.25rem 1.35rem;
+    margin:1.25rem 0 1.75rem;
+  }
+}
+
+/* --- Membrete. El filete superior pasa a ámbar: sobre azul, la tinta
+       desaparece, y el ámbar es el tono estructural del sistema. --- */
+.letterhead{border-top-color:var(--rail-ambar);}
+.namerow h1{color:var(--rail-texto-fuerte);}
+.namerow .role{color:var(--rail-texto);}
+.bio{color:var(--rail-texto); border-bottom-color:var(--rail-filete);}
+.letterhead .kicker{color:var(--rail-ambar);}
+.portrait{border-color:var(--rail-filete); background:var(--rail-control);}
+
+/* --- Menú. El número va en ámbar: diferencia el orden del nombre de la
+       sección sin meter un segundo azul. --- */
+nav.jump a{color:var(--rail-texto);}
+nav.jump .rail{background:var(--rail-control);}
+nav.jump .num{color:var(--rail-ambar);}
+@media (hover:hover) and (pointer:fine){
+  nav.jump a:hover{color:var(--rail-texto-fuerte); background:var(--rail-control);}
+  nav.jump a:hover .rail{background:var(--rail-ambar);}
+}
+nav.jump a:focus-visible{color:var(--rail-texto-fuerte);}
+nav.jump a:focus-visible .rail{background:var(--rail-ambar);}
+/* Invertir, no subir de color: chip de papel, texto en el azul del rail. */
+nav.jump a.active,
+nav.jump a.active:hover{background:var(--paper); color:var(--rail-texto-activo);}
+nav.jump a.active .rail{background:var(--rail-texto-activo);}
+nav.jump a.active .num{color:var(--rail-texto-activo);}
+@media (max-width:980px){
+  nav.jump a{border-color:var(--rail-filete);}
+  nav.jump a.active{border-color:var(--paper);}
+}
+
+/* --- Accesos. El icono es un hueco en el rail; al activarse se vuelve papel. --- */
+.actions{border-top-color:var(--rail-filete);}
+.act{color:var(--rail-texto);}
+.act .ic{background:var(--rail-control); border-color:var(--rail-filete); color:var(--rail-texto-fuerte);}
+@media (hover:hover) and (pointer:fine){
+  .act:hover{color:var(--rail-texto-fuerte);}
+  .act:hover .ic{background:var(--paper); border-color:var(--paper); color:var(--rail);}
+}
+.act:focus-visible .ic{background:var(--paper); border-color:var(--paper); color:var(--rail);}
+/* La hoja de vida es descarga, no contacto: el ámbar la separa, igual que antes. */
+.act-cv .ic{background:transparent; border-color:var(--rail-ambar); color:var(--rail-ambar);}
+@media (hover:hover) and (pointer:fine){
+  .act-cv:hover{color:var(--rail-ambar);}
+  .act-cv:hover .ic{background:var(--rail-ambar); border-color:var(--rail-ambar); color:var(--rail);}
+}
+.act-cv:focus-visible .ic{background:var(--rail-ambar); border-color:var(--rail-ambar); color:var(--rail);}
+.act.is-off{color:var(--rail-control);}
+
+/* --- La cifra es el dato: se queda con el acento pleno sobre papel (10,7:1).
+       Son cuatro y son el argumento del perfil; ahí sí paga el 3%. --- */
+.figures b{color:var(--accent);}
+
+/* ============================================================
+   TITULAR DE SECCIÓN — opción C, "el número manda" (2026-09-04)
+   El titular no fallaba por la cara: fallaba por escala. A 1,32rem en
+   versalitas pesaba igual que un rótulo. Ahora el número crece en Mono y se
+   lleva el ámbar; el titular queda en Archivo, en caja baja, sin versalitas.
+   Es el mismo gesto que ya hacen los números del rail.
+   ============================================================ */
+.sec-head{
+  display:flex; align-items:flex-start; gap:1.1rem;
+  border-bottom:2px solid var(--amber); padding-bottom:.6rem; margin-bottom:1.7rem;
+}
+.sec-head .n{
+  font-family:'JetBrains Mono',ui-monospace,monospace; font-weight:700;
+  font-size:clamp(1.6rem,1.1vw + 1.1rem,1.95rem); line-height:.92;
+  color:var(--amber-a3, #D6A44E); letter-spacing:-.04em;
+  flex:0 0 auto; font-variant-numeric:tabular-nums; padding-top:.06em;
+}
+.sec-texto{min-width:0;}
+.sec-head h2{
+  font-family:'Archivo',system-ui,sans-serif; font-weight:700;
+  font-size:clamp(1.42rem,.9vw + 1.1rem,1.72rem);
+  letter-spacing:-.018em; line-height:1.05; margin:0; text-transform:none;
+}
+.sec-head .sec-sub{
+  font-family:'JetBrains Mono',ui-monospace,monospace; font-size:.62rem;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--ink-mute);
+  margin:.32rem 0 0; text-align:left;
+}
+.sec-head .more{align-self:flex-end;}
+
+/* --- Los tres grupos de "Lo que construyo".
+       El orden es informativo: primero lo que se abre y se navega, después la
+       herramienta con que se construye, y al final lo que solo se puede contar. --- */
+.grupo{margin:2.4rem 0 .9rem; padding-bottom:.5rem; border-bottom:1px solid var(--line-strong);}
+.ledger > .grupo:first-child{margin-top:.4rem;}
+.grupo-t{
+  font-family:'Archivo',system-ui,sans-serif; font-weight:700; font-size:.78rem;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--amber); margin:0;
+}
+.grupo-g{
+  font-size:.86rem; color:var(--ink-soft); margin:.32rem 0 0; max-width:70ch;
+  text-align:left; hyphens:none;
+}
+
+/* ============================================================
+   RAIL: FOTO GRANDE Y SIN SCROLL (2026-09-04)
+   Los dos objetivos pelean por la misma altura, así que hay que devolver
+   espacio en vez de solo apretar. Tres decisiones:
+
+   1. El retrato sube a 116px y se centra, con el nombre DEBAJO a ancho
+      completo — que es lo que ya manda el §8.1: "el nombre y el rol van
+      debajo del avatar, no a su lado". De paso el nombre deja de necesitar
+      `nowrap` para caber.
+   2. La bio sale del rail. No se pierde: el perfil la repite palabra por
+      palabra dos líneas más abajo. Era la única duplicación del rail y los
+      escalones de altura anteriores ya la escondían en cuanto faltaba sitio
+      — esto solo lo vuelve la regla en vez de la excepción.
+   3. Se retiran los cuatro escalones por altura de viewport. Ya no hacen
+      falta: con lo anterior el rail mide ~660px y entra en un portátil de
+      768px de alto sin compactar nada.
+   ============================================================ */
+@media (min-width:981px){
+  .sidebar{overflow:visible; justify-content:flex-start; gap:0;}
+  .sidebar > div:first-child{flex:1 1 auto;}
+  .actions{margin-top:auto;}
+}
+
+.namerow{flex-direction:column; align-items:center; text-align:center; gap:.85rem;}
+.portrait{
+  width:116px; height:116px; flex-basis:116px;
+  border-width:2px; box-shadow:0 6px 18px rgba(0,0,0,.28);
+}
+.namerow h1{
+  white-space:normal; text-align:center;
+  font-size:clamp(1.44rem,1.1vw + 1.1rem,1.74rem);
+}
+.namerow .role{text-align:center; margin-top:.4rem;}
+.bio{display:none;}
+.letterhead{padding-top:1.15rem;}
+.namerow{padding-bottom:1.15rem; border-bottom:1px solid var(--rail-filete);}
+
+/* Los escalones por altura quedan sin efecto: el rail ya cabe. */
+@media (min-width:981px) and (max-height:1010px){
+  .sidebar{padding:1.75rem 1.35rem 1.5rem;}
+  .act{min-height:44px; font-size:.78rem;}
+  .act .ic{width:36px; height:36px; flex-basis:36px;}
+}
+@media (min-width:981px) and (max-height:960px){
+  .sidebar{padding:1.75rem 1.35rem 1.5rem;}
+  nav.jump{margin-top:1.6rem;}
+  nav.jump a{padding-top:.55rem; padding-bottom:.55rem;}
+  .actions{padding-top:1.1rem;}
+}
+@media (min-width:981px) and (max-height:900px){
+  .letterhead{padding-top:1.15rem;}
+  nav.jump{margin-top:1.5rem;}
+}
+/* En pantallas de verdad bajas (portátil 13" con barra del navegador) el
+   retrato cede un poco antes que aparecer scroll. */
+@media (min-width:981px) and (max-height:800px){
+  .sidebar{padding:1.4rem 1.2rem 1.25rem;}
+  .portrait{width:92px; height:92px; flex-basis:92px;}
+  nav.jump{margin-top:1.2rem;}
+  nav.jump a{padding-top:.48rem; padding-bottom:.48rem; font-size:.74rem;}
+  .act{min-height:40px;}
+  .act .ic{width:32px; height:32px; flex-basis:32px;}
+}
+@media (max-width:980px){
+  .namerow{flex-direction:row; text-align:left; gap:.95rem;}
+  .namerow h1, .namerow .role{text-align:left;}
+  .portrait{width:78px; height:78px; flex-basis:78px;}
+}
+
+/* ============================================================
+   FILAS DE "LO QUE CONSTRUYO" A UNA COLUMNA (2026-09-04)
+   La columna izquierda decía el tipo de pieza ("Modelo Excel", "Power BI")
+   y se comía ~130px de ancho en todas las filas para repetir un dato que
+   la captura ya deja ver. El tipo baja al pie de la fila, en el mismo tono
+   apagado: informa a quien lo busca, sin cobrar ancho.
+   En trayectoria y formación la columna se queda — ahí son fechas, y una
+   fecha a la izquierda es lo que hace que la lista se lea como un libro.
+   ============================================================ */
+.row-pieza{grid-template-columns:1fr; gap:0;}
+@media (min-width:1200px){ .row-pieza{grid-template-columns:1fr;} }
+.pieza-tipo{
+  font-family:'JetBrains Mono',ui-monospace,monospace; font-size:.64rem;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--ink-mute);
+  margin:.85rem 0 0; text-align:left;
+}
+
+/* Sin números, el menú del rail se apoya solo en el filete y el peso. */
+nav.jump a{gap:.9rem;}
+
+/* ============================================================
+   CORRECCIONES 2026-09-04 (revisión de Mauricio sobre la pieza)
+   ============================================================ */
+
+/* 1. Los accesos de contacto se salían del rail.
+      Causa: `overflow:visible` conviviendo con un `max-height` — el contenido
+      no cabía y, en vez de contenerse, se derramaba fuera de la tarjeta. El
+      rail vuelve a contener lo suyo. A tamaño normal no aparece barra alguna
+      (el rail mide ~660px y cabe hasta en 768 de alto); solo si el zoom del
+      navegador lo desborda, se desplaza por dentro en lugar de romperse. */
+@media (min-width:981px){
+  .sidebar{
+    max-height:calc(100vh - 3rem);
+    overflow-y:auto; overflow-x:hidden;
+    scrollbar-width:thin; scrollbar-color:var(--rail-control) transparent;
+  }
+}
+
+/* 2. Fuera los números de sección. El titular se sostiene con la escala,
+      que era el defecto real; el número era refuerzo, no la estructura. */
+.sec-head{gap:0;}
+
+/* 3. Las tarjetas de cifra mezclaban tres tratamientos: dato en Mono,
+      etiqueta en Inter y glosa otra vez en Mono. El sistema dice que
+      JetBrains Mono es de CIFRAS, así que la glosa sale de Mono y baja a la
+      familia del texto. Queda una sola regla: mono = número, sans = palabra.
+      Además las celdas se estiran a la misma altura y la glosa se alinea
+      abajo, para que una etiqueta de dos líneas no descuadre la fila. */
+.figures div{display:flex; flex-direction:column;}
+.figures b{
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+  font-size:1.12rem; line-height:1.12; letter-spacing:-.01em;
+}
+.figures span{
+  font-family:'Inter',-apple-system,'Segoe UI',sans-serif;
+  font-size:.8rem; font-weight:600; color:var(--ink);
+  margin-top:.45rem; line-height:1.3;
+}
+.figures em{
+  font-family:'Inter',-apple-system,'Segoe UI',sans-serif;
+  font-style:normal; font-size:.72rem; font-weight:400;
+  color:var(--ink-mute); line-height:1.35;
+  margin-top:.32rem; padding-top:0; margin-bottom:0;
+  display:block; align-self:flex-start;
+}
+.figures div{padding:1rem 1.05rem 1.05rem;}
+
+/* ============================================================
+   EL RAIL SE VE ENTERO, SIEMPRE (2026-09-04)
+   Limitarlo a la altura de la ventana solo cambiaba el sintoma: primero se
+   desbordaba, despues sacaba barra. Ninguna de las dos es "verlo todo".
+   Ahora el rail NO tiene techo — nunca recorta ni saca barra — y en su lugar
+   se compacta por escalones a medida que la ventana pierde alto. Los
+   escalones cuentan para el zoom del navegador tambien: al 150%, una pantalla
+   de 800px se comporta como una de 533.
+   ============================================================ */
+@media (min-width:981px){
+  .sidebar{ max-height:none; overflow:visible; }
+}
+
+/* ~ portatil estandar */
+@media (min-width:981px) and (max-height:860px){
+  .sidebar{padding:1.5rem 1.2rem 1.3rem;}
+  .portrait{width:100px; height:100px; flex-basis:100px;}
+  .namerow{gap:.7rem; padding-bottom:.95rem;}
+  nav.jump{margin-top:1.3rem;}
+  nav.jump a{padding-top:.5rem; padding-bottom:.5rem;}
+  .actions{padding-top:.95rem;}
+  .actions-row{gap:.3rem;}
+}
+/* ~ portatil 13" con barra del navegador, o zoom 125% */
+@media (min-width:981px) and (max-height:720px){
+  .sidebar{padding:1.25rem 1.1rem 1.1rem;}
+  .portrait{width:84px; height:84px; flex-basis:84px; border-width:2px;}
+  .namerow h1{font-size:1.32rem;}
+  .namerow .role{font-size:.64rem;}
+  nav.jump{margin-top:1.05rem;}
+  nav.jump a{padding-top:.42rem; padding-bottom:.42rem; font-size:.72rem; gap:.7rem;}
+  nav.jump .rail{width:2.4rem; flex-basis:2.4rem;}
+  .act{min-height:38px; font-size:.74rem;}
+  .act .ic{width:30px; height:30px; flex-basis:30px;}
+  .act .ic svg{width:14px; height:14px;}
+  .actions{padding-top:.8rem;}
+}
+/* ~ zoom 150% o pantalla muy baja: el rail sigue completo, solo mas apretado */
+@media (min-width:981px) and (max-height:600px){
+  .sidebar{padding:1rem .95rem .9rem;}
+  .letterhead{border-top-width:1px; padding-top:.8rem;}
+  .portrait{width:66px; height:66px; flex-basis:66px;}
+  .namerow{gap:.5rem; padding-bottom:.7rem;}
+  .namerow h1{font-size:1.14rem;}
+  .namerow .role{font-size:.58rem; margin-top:.25rem;}
+  nav.jump{margin-top:.8rem;}
+  nav.jump ul{gap:.05rem;}
+  nav.jump a{padding-top:.32rem; padding-bottom:.32rem; font-size:.66rem;}
+  .act{min-height:32px; font-size:.7rem; gap:.5rem;}
+  .act .ic{width:26px; height:26px; flex-basis:26px;}
+  .actions{padding-top:.6rem; gap:.6rem;}
+}
+
+/* ============================================================
+   ESCALA DE CUERPO Y REPARTO DE FUENTES  (2026-09-04)
+   Va al final a propósito: corrige por orden, sin tocar los bloques de arriba.
+
+   Lo que estaba mal, medido en el sitio en vivo:
+   - Tres tamaños para el MISMO rol (párrafo de cuerpo): 16,32 / 16 / 15,04 px.
+     Los 0,32 px de diferencia entre el primer párrafo del Perfil y el segundo no
+     se leen como jerarquía: se leen como error. Fue lo primero que saltó a la vista.
+   - JetBrains Mono en 96 textos que no son cifras. El §2 del DESIGN.md la reserva
+     para cifras financieras; usarla en "Multisoft" o en un rótulo la convierte en
+     una segunda fuente de texto y la página deja de tener una voz sola.
+
+   Decisión (Mauricio, 2026-09-04): DOS tamaños de cuerpo declarados, y la mono sale
+   de nombres y rótulos pero SE QUEDA en los chips —ahí el aire técnico es deliberado.
+   ============================================================ */
+:root{
+  --cuerpo:16px;        /* párrafo de lectura: Perfil, tarjetas, textos largos */
+  --cuerpo-lista:15px;  /* entrada de lista: Trayectoria, formación, piezas */
+}
+
+/* El primer párrafo del Perfil ya no se distingue por 0,32 px de tamaño.
+   Si tiene que pesar más que los siguientes, que sea por color y peso. */
+.lede{color:var(--ink);}
+.lede strong{font-weight:600;}
+
+/* Decisión (Mauricio, 2026-09-04): el Perfil se lee al mismo tamaño que la
+   descripción de cargo. Antes heredaba el clamp del body (16-18px) contra los
+   15px fijos de Trayectoria, y en pantalla ancha la diferencia se notaba. */
+#perfil p, .lede,
+.row p, .win, .row-brief p, .card p, .edu p{font-size:var(--cuerpo-lista);}
+
+/* Nombres propios y rótulos vuelven a Archivo: son texto, no cifras. */
+.row .org,
+.sec-head .sec-sub,
+.pieza-tipo,
+.namerow .role{
+  font-family:'Archivo','Inter',system-ui,sans-serif;
+}
+.row .org{font-weight:600; letter-spacing:.02em;}
+.sec-head .sec-sub,
+.pieza-tipo,
+.namerow .role{font-weight:600; letter-spacing:.1em;}
+
+/* El pie es texto corrido, no una tira de datos. */
+footer{font-family:'Inter',-apple-system,'Segoe UI',system-ui,sans-serif;}
+
+/* "Multisoft" es una palabra: justificarla no hace nada y puede abrir espacios.
+   §8.2 — por debajo de 60ch, bandera. */
+.row .org{text-align:left;}
+
+/* ============================================================
+   Movimiento de entrada (rescatado de la version anterior).
+   Dos piezas: la barra lateral entra al cargar, y cada bloque
+   del contenido aparece al entrar en pantalla. Desplazamiento
+   corto (14px) y opacidad: se siente asentado, no animado.
+   Sin JS o con reduced-motion todo queda visible y quieto.
+   ============================================================ */
+.js [data-entra]{opacity:0; transform:translateY(20px);}
+.js [data-entra].is-dentro{
+  opacity:1; transform:none;
+  transition:opacity 600ms cubic-bezier(.645,.045,.355,1),
+             transform 600ms cubic-bezier(.645,.045,.355,1);
+}
+/* Escalonado: el orden lo pone el JS en --paso. */
+.js [data-entra].is-dentro{transition-delay:calc(var(--paso, 0) * 70ms);}
+
+@media (prefers-reduced-motion: reduce){
+  .js [data-entra]{opacity:1; transform:none; transition:none;}
+}

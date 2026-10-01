@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<script>document.documentElement.className+=" js";</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+/* La landing SIEMPRE abre por el inicio. Chrome restaura la posicion de scroll
+   al recargar o al volver atras, asi que un visitante que ya habia bajado
+   reaparecia en Contacto creyendo que esa era la portada. Solo se respeta el
+   destino cuando el propio enlace trae ancla (#trayectoria, #contacto...). */
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+if (!location.hash) window.addEventListener('load', function(){ window.scrollTo(0, 0); });
+</script>
+<title>Mauricio Escobar. Finanzas corporativas con estándar de junta directiva</title>
+<meta name="description" content="20 años dirigiendo finanzas corporativas en Grupo Aval, Paramount y ciberseguridad. Modelos financieros y sistemas de información que hacen que el número llegue a tiempo.">
+
+<meta property="og:title" content="Mauricio Escobar. Finanzas corporativas con estándar de junta directiva">
+<meta property="og:description" content="Modelos financieros y sistemas de información que hacen que el número llegue a tiempo y se pueda creer.">
+<meta property="og:image" content="assets/img/mauricio-escobar.jpg">
+<meta property="og:type" content="website">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="css/home.css?v=53834d32">
+</head>
+<body>
+<div class="shell" lang="es">
+
+<aside class="sidebar">
+  <div>
+    <div class="letterhead">
+      <div class="namerow">
+        <div class="portrait"><img src="assets/img/mauricio-escobar.jpg" alt="Mauricio Escobar"></div>
+        <div>
+          <h1>Mauricio Escobar</h1>
+          <p class="role">CFO · FP&amp;A · Business Intelligence</p>
+        </div>
+      </div>
+      <p class="bio">20 años ordenando la información financiera de compañías grandes.
+      Hoy la pongo al servicio de juntas que tienen que decidir.</p>
+    </div>
+
+    <nav class="jump" aria-label="Secciones">
+      <ul>
+        <li><a href="#perfil"><span class="rail"></span>Perfil</a></li>
+        <li><a href="#trayectoria"><span class="rail"></span>Trayectoria</a></li>
+        <li><a href="#construyo"><span class="rail"></span>Lo que construyo</a></li>
+        <li><a href="#formacion"><span class="rail"></span>Formación</a></li>
+        <li><a href="#contacto"><span class="rail"></span>Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="actions">
+    <div class="actions-row">
+      <a class="act" href="https://www.linkedin.com/in/mauricio-escobar-bernales/" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.76-1.95C20.6 8.75 21 11.2 21 14.4V21h-4v-5.9c0-1.4-.03-3.2-2-3.2s-2.3 1.5-2.3 3.1V21H9z"/></svg></span>
+        Conectemos
+      </a>
+      <a class="act" href="https://wa.me/573005422702?text=Hola%20Mauricio%2C%20vi%20tu%20sitio%20y%20quiero%20conversar" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.05L2 22l5.1-1.33A10 10 0 1 0 12 2zm0 2a8 8 0 1 1-4.1 14.86l-.3-.18-3 .78.8-2.92-.2-.31A8 8 0 0 1 12 4zm4.3 10.1c-.24-.12-1.4-.7-1.62-.78-.22-.08-.38-.12-.54.12s-.62.78-.76.94-.28.18-.52.06a6.5 6.5 0 0 1-1.92-1.18 7.2 7.2 0 0 1-1.32-1.65c-.14-.24 0-.37.1-.49s.24-.28.36-.42a1.6 1.6 0 0 0 .24-.4.44.44 0 0 0 0-.42c-.06-.12-.54-1.3-.74-1.78s-.4-.4-.54-.41h-.46a.88.88 0 0 0-.64.3 2.68 2.68 0 0 0-.84 2 4.66 4.66 0 0 0 .98 2.46 10.66 10.66 0 0 0 4.08 3.6c.57.25 1.02.4 1.37.5a3.28 3.28 0 0 0 1.5.1 2.46 2.46 0 0 0 1.6-1.14 2 2 0 0 0 .14-1.13c-.06-.1-.22-.16-.46-.28z"/></svg></span>
+        Conversemos
+      </a>
+      <a class="act" href="mailto:hugomauricioescobar@gmail.com">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+        Escríbeme
+      </a>
+      <a class="act act-cv" href="assets/Mauricio-Escobar-Bernales-CV.pdf" download>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg></span>
+        Mi hoja de vida
+      </a>
+    </div>
+  </div>
+</aside>
+
+<main>
+
+<section id="perfil">
+  <div class="sec-head">
+    <div class="sec-texto"><h2>Perfil</h2><p class="sec-sub">20 años de finanzas corporativas</p></div>
+  </div>
+  <div class="figures">
+    <div><b>2 días → 1 hora</b><span>Consolidación financiera</span><em>sobre COP 94.000M de presupuesto</em></div>
+    <div><b>COP 4.000M</b><span>En ahorros</span><em>Comité de Eficiencia que creé y lideré</em></div>
+    <div><b>100%</b><span>Proyectos dentro de presupuesto</span><em>proyectos de hasta USD 50M · Paramount</em></div>
+    <div><b>10 personas</b><span>Equipo a cargo</span><em>Colombia · América · España</em></div>
+  </div>
+  <p class="lede">Dirijo finanzas corporativas con estándar de junta directiva: planeación, presupuesto,
+  tesorería y riesgo. Pero el efecto que busco no se queda en finanzas: cuando la información está
+  ordenada y llega a tiempo, comercial prioriza distinto, operaciones deja de improvisar, y la junta
+  discute la decisión en vez de discutir la cifra.</p>
+  <p>Ese es el trabajo: estructurar la información, analizarla hasta que diga algo, y llevar el
+  hallazgo a quien tiene que actuar — en el plano estratégico y en el táctico, que casi nunca se
+  resuelven en la misma reunión. <strong>Business Intelligence</strong>, <strong>inteligencia
+  artificial</strong> y <strong>Excel avanzado</strong> me dan velocidad; el análisis, el oficio
+  corporativo y dirigir un equipo hacia un mismo estándar son los que hacen que el hallazgo llegue a
+  tiempo y que alguien lo use.</p>
+  <p>20 años: un grupo financiero vigilado (Fiduciaria Bogotá, Grupo Aval), producción de
+  cine para un estudio internacional (TIS Productions, Paramount) y ciberseguridad (Multisoft).
+  <strong>Mi aporte no depende de la industria: construyo el camino que lleva el dato crudo hasta un
+  tablero donde el problema se vuelve evidente, y me siento a decidir con él.</strong></p>
+</section>
+
+<section id="trayectoria">
+  <div class="sec-head">
+    <div class="sec-texto"><h2>Trayectoria</h2><p class="sec-sub">De analista de crédito a vicepresidente</p></div>
+  </div>
+  <div class="ledger">
+
+    <div class="row">
+      <div class="when">Ago 2025<br>Jun 2026</div>
+      <div>
+        <h3>Vicepresidente Financiero y Administrativo</h3>
+        <p class="org">Multisoft</p>
+        <p>Estrategia financiera y administrativa de la compañía en Colombia, América y España, con un
+        equipo de diez personas y reporte directo a junta directiva. Implementé un sistema de gestión de
+        riesgos con modelo de scoring crediticio y formulé el plan financiero del año siguiente sobre
+        proyecciones de inteligencia de negocios. Diseñé el tablero de control del pipeline comercial
+        por negocio, comercial y cliente, contra presupuesto.</p>
+        <p class="win">Apalancado en mi gestión, la compañía cerró 2025 con ahorros frente al presupuesto
+        aprobado. Tecnología y ciberseguridad.</p>
+        <div class="tags"><span class="tag">Presupuesto</span><span class="tag">Control presupuestal</span><span class="tag">Tesorería</span><span class="tag">Riesgo crediticio</span><span class="tag">Junta directiva</span><span class="tag">Power BI</span></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="when">Dic 2022<br>Mar 2025</div>
+      <div>
+        <h3>Director FP&amp;A</h3>
+        <p class="org">TIS Productions (Paramount)</p>
+        <p>Planeación financiera regional de proyectos de producción fílmica en Colombia y México, con foco
+        en EBITDA y márgenes operativos. Llevé el ciclo de análisis de quincenal a semanal con tableros en
+        tiempo real, y gestioné el incentivo tributario CINA ante el Ministerio de Cultura.</p>
+        <p class="win">Proyectos audiovisuales de hasta <b>USD 50M</b> de presupuesto, con el <b>100%</b>
+        cerrando dentro de lo asignado. Devolución cercana al <b>35%</b> de gastos aplicables vía CINA.</p>
+        <div class="tags"><span class="tag">FP&amp;A</span><span class="tag">Costeo por proyecto</span><span class="tag">Incentivos tributarios</span></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="when">May 2014<br>Nov 2022</div>
+      <div>
+        <h3>Gerente de Planeación Financiera y Estratégica</h3>
+        <p class="org">Fiduciaria Bogotá</p>
+        <p>Ocho años al frente del presupuesto corporativo, los KPI y OKR estratégicos y los ejercicios de
+        planeación, reportando a colaboradores, directivos y junta. Creé y lideré el Comité de Eficiencia
+        de la compañía.</p>
+        <p class="win"><b>COP 94.000M</b> de presupuesto anual con ejecución del <b>96%</b>. Consolidación
+        financiera de <b>2 días a 1 hora</b>. Ahorros por <b>COP 4.000M</b>. Modelo de rentabilidad por
+        producto que sostuvo un ROE superior al <b>20%</b>.</p>
+        <div class="tags"><span class="tag">Presupuesto</span><span class="tag">Business Intelligence</span><span class="tag">KPI y OKR</span><span class="tag">Grupo Aval</span></div>
+      </div>
+    </div>
+
+    <div class="row row-brief">
+      <div class="when">Mar 2009<br>May 2014</div>
+      <div>
+        <h3>Especialista de Planeación Financiera</h3>
+        <p class="org">Fiduciaria Bogotá</p>
+        <p>Construí los modelos que después serían la base del sistema de inteligencia de negocios de
+        la compañía. Reportes presupuestales, de cuatro días a dos.</p>
+      </div>
+    </div>
+
+    <div class="row row-brief">
+      <div class="when">Feb 2007<br>Dic 2007</div>
+      <div>
+        <h3>Analista financiero</h3>
+        <p class="org">Siemens Ibérica</p>
+        <p>Análisis financiero y gestión de pedidos en SAP para una multinacional industrial, en
+        paralelo al MBA en Madrid.</p>
+      </div>
+    </div>
+
+    <div class="row row-brief">
+      <div class="when">Jun 2004<br>May 2006</div>
+      <div>
+        <h3>Analista de crédito</h3>
+        <p class="org">Banco de Bogotá</p>
+        <p>El punto de partida: riesgo de clientes Pyme, empresariales y corporativos, con presentación
+        al Comité de Riesgo. Aprendí a leer un balance desde afuera.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="construyo">
+  <div class="sec-head">
+    <div class="sec-texto"><h2>Lo que construyo</h2><p class="sec-sub">Tableros, modelos y descargables</p></div>
+  </div>
+  <p class="lede">Las cifras cuentan historias, pero sueltas suenan a ruido. Un estado financiero ya sabe quién sostiene la compañía, quién vive de los demás y en qué mes empezó a torcerse: lo dice desordenado y a destiempo, y por eso nadie lo oye. <strong>Mi oficio es ponerlas en orden hasta que se escuchen</strong> — cada dato en su entrada, la comparación en su compás, el hallazgo justo donde ya no se puede ignorar. Cuando eso pasa, la junta deja de discutir la cifra y se pone a decidir. Abajo están los instrumentos con los que armo esa partitura.</p>
+  <div class="ledger">
+
+    <div class="row row-pieza">
+      <div>
+        <div class="head-line"><h3>Utilidad del sector bancario colombiano</h3><span class="chip chip-pub">Público</span></div>
+        <p>Utilidad, rentabilidad, eficiencia y riesgo de los 30 bancos del país, con corte mensual. A junio de 2026 el sector ganó $9,1 billones, 50,6% más que un año atrás; el tablero muestra quién rinde, quién gasta de más y cómo se compara cada banco contra el sector.</p>
+        <div class="tags"><span class="tag">Power BI</span><span class="tag">Superintendencia Financiera</span><span class="tag">Rentabilidad y eficiencia</span></div>
+        <a class="abrir" href="https://app.powerbi.com/view?r=eyJrIjoiNDkyMWVmMmUtMjRiNy00Yjc5LWFiZDktYTc0ODIxMDdlMDczIiwidCI6ImQ2NDZkM2E4LTdiMTUtNGI1My05ZDkyLTk4MTVmZDYyNzAyYyIsImMiOjR9&amp;pageName=MEBPortada" target="_blank" rel="noopener">Abrir el informe<span class="flecha" aria-hidden="true">→</span></a>
+        <div class="thumb thumb-full"><img src="assets/img/modelos/05-powerbi-bancos-jun2026.png" alt="Informe del sector bancario a junio de 2026: utilidad, ROE, eficiencia, calidad de cartera y cuadrante de rentabilidad contra eficiencia por banco" loading="lazy"></div>
+              </div>
+    </div>
+    <div class="row row-pieza">
+      <div>
+        <div class="head-line"><h3>Análisis del sector fiduciario</h3><span class="chip chip-pub">Público</span></div>
+        <p>Lee los informes oficiales de la Superintendencia Financiera y convierte activos fideicomitidos, comisiones y resultados en comparables entre las 27 sociedades vigiladas. Datos del regulador, verificables por cualquiera.</p>
+        <div class="tags"><span class="tag tag-tipo">Cifras públicas</span><span class="tag">Supabase</span><span class="tag">Datos del regulador</span><span class="tag">Serie 2019–2026</span></div>
+        <a class="abrir" href="https://mauito-fiduciaria-insight.hugomauricioescobar.workers.dev/" target="_blank" rel="noopener">Abrir el tablero<span class="flecha" aria-hidden="true">→</span></a>
+        <div class="thumb thumb-full"><img src="assets/img/modelos/06-fiduciarias.png" alt="Panorama del sector fiduciario: ingresos, utilidad, ROE y comisiones año por año" loading="lazy"></div>
+              </div>
+    </div>
+    <div class="row row-pieza">
+      <div>
+        <div class="head-line"><h3>Análisis financiero de empresas</h3><span class="chip chip-pub">Público</span></div>
+        <p>Estados financieros públicos de empresas colombianas convertidos en indicadores comparables: rentabilidad, endeudamiento, liquidez y eficiencia, con la mediana del sector al lado de cada cifra.</p>
+        <div class="tags"><span class="tag tag-tipo">Cifras públicas</span><span class="tag">Supersociedades</span><span class="tag">Indicadores comparables</span><span class="tag">Benchmark sectorial</span></div>
+        <a class="abrir" href="https://mauito-financial-compass.hugomauricioescobar.workers.dev/" target="_blank" rel="noopener">Abrir el tablero<span class="flecha" aria-hidden="true">→</span></a>
+        <div class="thumb thumb-full"><img src="assets/img/modelos/07-supersociedades.png" alt="Estado de resultados comparado contra el cierre anterior, con la mediana del sector" loading="lazy"></div>
+              </div>
+    </div>
+    <div class="row row-pieza">
+      <div>
+        <div class="head-line"><h3>Los seis ratios que un CFO mira todos los meses</h3><span class="chip chip-pub">Público</span></div>
+        <p>Margen EBITDA, cobertura de deuda, razón corriente, días de capital de trabajo, ROCE y apalancamiento operativo, cada uno contra su referencia. Se carga un Excel propio y la calculadora dibuja los doce meses; sin archivo corre con datos de ejemplo.</p>
+        <div class="tags"><span class="tag tag-tipo">Calculadora web</span><span class="tag">Seis indicadores</span><span class="tag">Benchmark por ratio</span><span class="tag">Carga tu Excel</span></div>
+        <a class="abrir" href="https://claude.ai/code/artifact/e2f0d86e-1b66-40ca-a56c-419872c2c313" target="_blank" rel="noopener">Abrir la calculadora<span class="flecha" aria-hidden="true">→</span></a>
+        <div class="thumb thumb-full"><img src="assets/img/modelos/08-ratios-cfo.png" alt="Calculadora de seis ratios CFO con tarjeta, benchmark y serie mensual de cada indicador" loading="lazy"></div>
+              </div>
+    </div>
+
+    <p class="nota-datos">Los cuatro modelos de abajo se muestran con <strong>cifras de ejemplo</strong>. La estructura y los criterios de cálculo son los reales; los números no corresponden a ninguna compañía.</p>
+    <div class="row row-pieza">
+      <div>
+        <div class="head-line"><h3>Presupuesto 2027 contra real 2026</h3><span class="chip chip-mod">Descargable</span></div>
+        <p>Arma el presupuesto del año siguiente a partir de supuestos de volumen, precio, inflación y salarios, mes a mes y por centro de costo, y lo compara contra el real. El tablero responde de dónde sale la utilidad, qué centro de costo pide más gasto y qué cuentas mueven el resultado.</p>
+        <div class="tags"><span class="tag tag-tipo">Modelo Excel</span><span class="tag">Presupuesto</span><span class="tag">Centros de costo</span><span class="tag">Power Query</span></div>
+        <a class="abrir" href="https://mauricio-escobar-ebiy42.subscribepage.io" target="_blank" rel="noopener">Recibir el modelo por correo<span class="flecha" aria-hidden="true">→</span></a>
+        <div class="thumb thumb-full"><img src="assets/img/modelos/11-ppto-2027.png" alt="Tablero del presupuesto 2027 contra el real 2026: ingresos, cascada de utilidad, márgenes, reparto mensual, gasto por centro de costo y cuentas que más varían" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="row row-pieza">
+      <div>
+        <div class="head-line"><h3>Flujo de caja proyectado a 13 semanas</h3><span class="chip chip-mod">Descargable</span></div>
+        <p>Proyección rodante semana a semana que muestra cuándo se abre un hueco de caja, no solo si se abre. Arranca en el saldo de bancos, suma cobros por cartera y resta pagos programados; el tablero se filtra por rango de fechas y unidad.</p>
+        <div class="tags"><span class="tag tag-tipo">Modelo Excel</span><span class="tag">Tesorería</span><span class="tag">Power Query</span><span class="tag">Sin macros</span></div>
+        <a class="abrir" href="assets/Flujo-de-caja-13-semanas-MEB.xlsx" download>Descargar el modelo (Excel, 667 KB)<span class="flecha" aria-hidden="true">→</span></a>
+        <div class="thumb thumb-full"><img src="assets/img/modelos/03-flujo-13-semanas-v2.png" alt="Tablero del flujo de caja a 13 semanas: saldo inicial, entradas, salidas y cascada semanal del saldo" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="row row-pieza">
+      <div>
+        <div class="head-line"><h3>Board pack para junta directiva</h3><span class="chip chip-mod">Descargable</span></div>
+        <p>Los seis números y los siete bloques que una junta revisa cada mes, en el orden en que se presentan. Todo se calcula del mes 1 al mes de corte, y un mes sin datos dice «sin datos», no un falso verde.</p>
+        <div class="tags"><span class="tag tag-tipo">Modelo Excel</span><span class="tag">Gobierno corporativo</span><span class="tag">Márgenes y caja</span><span class="tag">Cartera</span></div>
+        <a class="abrir" href="assets/BOARD-PACK-JUNTA-MEB.xlsx" download>Descargar el modelo (Excel, 254 KB)<span class="flecha" aria-hidden="true">→</span></a>
+        <div class="thumb thumb-full"><img src="assets/img/modelos/09-board-pack.png" alt="Resumen para la junta: ingresos, margen bruto, EBITDA y los siete bloques con real contra referencia" loading="lazy"></div>
+      </div>
+    </div>
+    <div class="row row-pieza">
+      <div>
+        <div class="head-line"><h3>Tablero de ventas con Power Query</h3><span class="chip chip-mod">Descargable</span></div>
+        <p>Ventas por región, canal, categoría y producto con filtros conectados y comparación contra el año anterior. Los datos entran por Power Query: se pega la base nueva, se actualiza y el tablero se recalcula sin tocar fórmulas.</p>
+        <div class="tags"><span class="tag tag-tipo">Modelo Excel</span><span class="tag">Power Query</span><span class="tag">Segmentadores</span><span class="tag">Sin macros</span></div>
+        <a class="abrir" href="assets/TABLERO-VENTAS-POWERQUERY-MEB.xlsx" download>Descargar el tablero (Excel, 508 KB)<span class="flecha" aria-hidden="true">→</span></a>
+        <div class="thumb thumb-full"><img src="assets/img/modelos/10-tablero-ventas.png" alt="Tablero de ventas: indicadores del año, ventas mensuales, ventas por región, categoría, canal y productos principales" loading="lazy"></div>
+      </div>
+    </div>
+
+    <div class="row row-pieza">
+      <div>
+        <div class="head-line"><h3>Modelo financiero para un café de barrio</h3><span class="chip chip-priv">Privado</span></div>
+        <p>Asesoría voluntaria a un café de barrio que acaba de abrir su local: cuántas tazas al día necesita vender para sostenerse, flujo de caja a doce meses con la deuda incluida y tres escenarios de venta. El modelo le dice al dueño qué número mirar cada semana. Las cifras son del emprendedor y no se publican.</p>
+        <div class="tags"><span class="tag tag-tipo">Voluntariado</span><span class="tag">Punto de equilibrio</span><span class="tag">Flujo de caja</span><span class="tag">Escenarios</span></div>
+      </div>
+    </div>
+    <div class="row row-pieza">
+      <div>
+        <div class="head-line"><h3>Chess Gym</h3><span class="chip chip-pub">Público</span></div>
+        <p>Entrenador de aperturas de ajedrez con motor de análisis y repetición espaciada. No tiene nada que ver con finanzas: está aquí porque demuestra que lo que construyo llega a funcionar de verdad, no a quedarse en prototipo.</p>
+        <div class="tags"><span class="tag tag-tipo">Fuera de finanzas</span><span class="tag">Motor de ajedrez</span><span class="tag">Repetición espaciada</span><span class="tag">React</span></div>
+        <a class="abrir" href="https://chess-gym.lovable.app/" target="_blank" rel="noopener">Abrir Chess Gym<span class="flecha" aria-hidden="true">→</span></a>
+              </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="formacion">
+  <div class="sec-head">
+    <div class="sec-texto"><h2>Formación</h2><p class="sec-sub">MBA, pregrado y especializaciones</p></div>
+  </div>
+  <div class="edu">
+    <div class="row"><div class="when">2008</div><div><h3>MBA, Master en Administración de Empresas</h3><p>Escuela de Negocios CESMA · Madrid, España</p></div></div>
+    <div class="row"><div class="when">2003</div><div><h3>Administrador de Empresas</h3><p>Universidad Militar Nueva Granada · Bogotá</p></div></div>
+    <div class="row"><div class="when">2015</div><div><h3>Diplomado en Gerencia Estratégica</h3><p>Cámara de Comercio de Bogotá</p></div></div>
+    <div class="row"><div class="when">2004</div><div><h3>Diplomado en Gerencia Integral de Riesgo Crediticio SARO</h3><p>Politécnico Grancolombiano · Bogotá</p></div></div>
+    <div class="row"><div class="when">2002</div><div><h3>Diplomado en Gerencia de Comercio Internacional</h3><p>Universidad Militar Nueva Granada · Bogotá</p></div></div>
+  </div>
+  <div class="skills">
+    <div>
+      <h4>Herramientas</h4>
+      <div class="tags"><span class="tag">Excel avanzado</span><span class="tag">Power BI</span><span class="tag">Power Query</span><span class="tag">Power Apps</span><span class="tag">Power Automate</span><span class="tag">SharePoint</span><span class="tag">SAP</span></div>
+    </div>
+    <div>
+      <h4>Áreas</h4>
+      <div class="tags"><span class="tag">FP&amp;A</span><span class="tag">Presupuesto</span><span class="tag">Tesorería</span><span class="tag">Riesgo financiero</span><span class="tag">Business Intelligence</span><span class="tag">Costos y rentabilidad</span><span class="tag">Estrategia corporativa</span></div>
+    </div>
+    <div>
+      <h4>Idiomas</h4>
+      <p class="langs"><b>Español</b> nativo · <b>Inglés</b> avanzado</p>
+    </div>
+    <div>
+      <h4>Construido con IA</h4>
+      <div class="tags"><span class="tag">React</span><span class="tag">Supabase</span><span class="tag">Dashboards web</span><span class="tag">Automatizaciones</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="sec-head">
+    <div class="sec-texto"><h2>Contacto</h2><p class="sec-sub">Tres formas de escribirme</p></div>
+  </div>
+  <div class="contact-cta">
+    <p>¿Hablamos de finanzas corporativas, de un modelo o de un tablero a la medida? Escríbeme por
+    <a href="https://www.linkedin.com/in/mauricio-escobar-bernales/" target="_blank" rel="noopener">LinkedIn</a>,
+    por <a href="mailto:hugomauricioescobar@gmail.com">correo</a> o por
+    <a href="https://wa.me/573005422702?text=Hola%20Mauricio%2C%20vi%20tu%20sitio%20y%20quiero%20conversar" target="_blank" rel="noopener">WhatsApp</a>.
+    La hoja de vida completa está en el botón de arriba.</p>
+  </div>
+  <footer>© 2026 Mauricio Escobar Bernales</footer>
+</section>
+
+</main>
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.jump a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function setActive(){
+    var y = window.scrollY + window.innerHeight * 0.3;
+    var current = 0;
+    for (var i = 0; i < sections.length; i++){
+      if (sections[i] && sections[i].offsetTop <= y) current = i;
+    }
+    /* La última sección nunca alcanza la línea del 30% porque el scroll topa
+       antes. Al llegar al fondo se marca ella, que es lo que el usuario ve. */
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2){
+      current = sections.length - 1;
+    }
+    links.forEach(function(a, i){ a.classList.toggle('active', i === current); });
+  }
+  /* Sin guarda de requestAnimationFrame: si el rAF no corre (pestaña de fondo,
+     panel oculto), la guarda se queda trabada y el menú deja de marcar para
+     siempre. Leer seis offsetTop por evento es más barato que ese riesgo. */
+  window.addEventListener('scroll', setActive, {passive:true});
+  window.addEventListener('resize', setActive, {passive:true});
+  setActive();
+})();
+</script>
+
+
+
+
+<script>
+/* Secuencia de modelo: avanza sola solo mientras esta a la vista, se detiene al
+   pasar el mouse o al enfocar con teclado, y respeta prefers-reduced-motion.
+   Si el usuario toca un boton, el automatico se apaga: manda su intencion. */
+(function () {
+  var quieto = matchMedia('(prefers-reduced-motion: reduce)');
+  document.querySelectorAll('[data-secuencia]').forEach(function (fig) {
+    var imgs  = [].slice.call(fig.querySelectorAll('.sec-lienzo img'));
+    var btns  = [].slice.call(fig.querySelectorAll('.sec-pasos button'));
+    if (imgs.length < 2) return;
+    var i = 0, timer = null, manual = false;
+
+    function listaImg(im) { return im.complete && im.naturalWidth > 0; }
+
+    // Avanza al siguiente fotograma QUE YA HAYA LLEGADO. Si ninguno mas esta
+    // listo, se queda donde esta y reintenta al siguiente tic: un fotograma
+    // lento no puede congelar la secuencia ni mostrar un hueco en blanco.
+    function siguiente() {
+      for (var k = 1; k < imgs.length; k++) {
+        var c = (i + k) % imgs.length;
+        if (listaImg(imgs[c])) return c;
+      }
+      return i;
+    }
+
+    function mostrar(n) {
+      i = (n + imgs.length) % imgs.length;
+      imgs.forEach(function (im, k) { im.classList.toggle('is-activo', k === i); });
+      btns.forEach(function (b, k) {
+        b.classList.toggle('is-activo', k === i);
+        b.setAttribute('aria-pressed', k === i ? 'true' : 'false');
+      });
+    }
+    function arrancar() {
+      if (timer || manual || quieto.matches) return;
+      timer = setInterval(function () { mostrar(siguiente()); }, 2600);
+    }
+    function parar() { clearInterval(timer); timer = null; }
+
+    btns.forEach(function (b, k) {
+      b.addEventListener('click', function () { manual = true; parar(); mostrar(k); });
+    });
+    fig.addEventListener('mouseenter', parar);
+    fig.addEventListener('mouseleave', arrancar);
+    fig.addEventListener('focusin', parar);
+
+    // Los fotogramas 2 y 3 van con loading="lazy" para no pesar en la primera
+    // carga. Si el intervalo arranca antes de que lleguen, se ve un salto en
+    // blanco: por eso se piden primero y solo despues empieza el movimiento.
+    var precargado = false;
+    function precargar(listo) {
+      if (precargado) return listo();
+      precargado = true;
+      var faltan = imgs.filter(function (im) { return !im.complete || !im.naturalWidth; });
+      if (!faltan.length) return listo();
+      var pend = faltan.length;
+      faltan.forEach(function (im) {
+        im.loading = 'eager';
+        var cal = new Image();
+        cal.onload = cal.onerror = function () { if (--pend === 0) listo(); };
+        cal.src = im.currentSrc || im.src;
+      });
+    }
+
+    // Visibilidad por geometria, no solo por IntersectionObserver. Se comprobo
+    // que hay entornos donde el observador no emite ni el evento inicial que la
+    // especificacion garantiza; si el movimiento dependiera solo de el, la
+    // secuencia se quedaria congelada sin ningun error visible.
+    function visible() {
+      var r = fig.getBoundingClientRect();
+      return r.bottom > innerHeight * 0.15 && r.top < innerHeight * 0.85;
+    }
+    var pedido = false;
+    function evaluar() {
+      pedido = false;
+      if (visible()) { precargar(function () {}); arrancar(); } else { parar(); }
+    }
+    function alDesplazar() {
+      if (pedido) return;
+      pedido = true;
+      requestAnimationFrame(evaluar);
+    }
+    addEventListener('scroll', alDesplazar, { passive: true });
+    addEventListener('resize', alDesplazar);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(alDesplazar, { threshold: [0, 0.4] }).observe(fig);
+    }
+    evaluar();
+  });
+})();
+</script>
+
+<script>
+/* Movimiento de entrada, rescatado de la version anterior de la landing.
+   El script marca solo lo que se anima: el HTML de las secciones no cambia.
+   Si este script no corre, la clase "js" nunca se usa y todo queda visible. */
+(function () {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.remove('js');
+    return;
+  }
+
+  function marcar(el, paso) {
+    el.setAttribute('data-entra', '');
+    el.style.setProperty('--paso', paso);
+  }
+
+  // La barra lateral entra al cargar, en orden de lectura.
+  var entrada = [].slice.call(document.querySelectorAll('.letterhead, .jump, .actions'));
+  entrada.forEach(function (el, k) { marcar(el, k); });
+  // setTimeout y no requestAnimationFrame: en una pestana abierta en segundo
+  // plano rAF queda congelado y la barra lateral no aparecia nunca.
+  setTimeout(function () {
+    entrada.forEach(function (el) { el.classList.add('is-dentro'); });
+  }, 60);
+
+  // El contenido aparece por bloques al llegar a pantalla. El escalonado se
+  // reinicia en cada seccion para que ninguna acumule retraso.
+  var SEL = ':scope > .sec-head, :scope > .figures, :scope > p, :scope > .skills,'
+          + ':scope > .contact-cta, :scope > footer, :scope > .ledger > .row';
+  document.querySelectorAll('main section').forEach(function (sec) {
+    [].slice.call(sec.querySelectorAll(SEL)).forEach(function (el, k) {
+      marcar(el, Math.min(k, 3));
+    });
+  });
+
+  var todos = [].slice.call(document.querySelectorAll('[data-entra]'));
+  if (!('IntersectionObserver' in window)) {
+    todos.forEach(function (el) { el.classList.add('is-dentro'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function (filas) {
+    filas.forEach(function (f) {
+      if (!f.isIntersecting) return;
+      f.target.classList.add('is-dentro');
+      obs.unobserve(f.target);   // entra una vez: no parpadea al volver a subir
+    });
+  }, { rootMargin: '0px 0px -22% 0px', threshold: 0 });
+  todos.forEach(function (el) {
+    if (!el.classList.contains('is-dentro')) obs.observe(el);
+  });
+
+  // Red de seguridad: si el observador no emite (pasa en algunos entornos y en
+  // pestanas de fondo), a los 1,2 s se muestra todo. Nunca queda texto oculto.
+  setTimeout(function () {
+    var visto = todos.some(function (el) { return el.classList.contains('is-dentro'); });
+    if (visto) return;   // el observador si esta trabajando: no lo atropellamos
+    todos.forEach(function (el) { el.classList.add('is-dentro'); });
+  }, 1500);
+})();
+</script>
+</body>
+</html>

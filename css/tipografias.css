@@ -1,0 +1,61 @@
+/*
+  Mauricio Escobar — opciones tipográficas por pieza o campaña.
+  Se combina con paletas.css:  <body data-paleta="pymes" data-tipografia="tablero">
+  Sin atributo, la pieza queda institucional.
+
+  Solo cambian el TITULAR y los encabezados. El texto corrido y las CIFRAS
+  no se tocan nunca: toda cifra va en JetBrains Mono tabular.
+
+  Cada opción necesita su familia cargada (enlace en PALETAS.md, Tipografías).
+  Verificar con document.fonts.check(): una fuente sin cargar cae al respaldo sin avisar.
+*/
+:root,
+[data-tipografia="institucional"]{
+  --fuente-titular:"Archivo",system-ui,sans-serif;
+  --peso-titular:700; --caja-titular:none; --tracking-titular:-.015em;
+  --fuente-texto:"Inter",-apple-system,"Segoe UI",sans-serif;
+  --fuente-cifra:"JetBrains Mono",Consolas,ui-monospace,monospace;
+}
+/* Producto: tableros y apps (DESIGN.md §2). Mínimo 26px o se aprieta. */
+[data-tipografia="tablero"]{
+  --fuente-titular:"Big Shoulders Display","Archivo",Impact,sans-serif;
+  --peso-titular:800; --caja-titular:uppercase; --tracking-titular:.012em;
+}
+/* Contenido: carruseles, LinkedIn, lead magnets. Interlineado >= 1,15 con tildes. */
+[data-tipografia="contenido"]{
+  --fuente-titular:"Anton","Archivo",Impact,sans-serif;
+  --peso-titular:400; --caja-titular:uppercase; --tracking-titular:.005em;
+}
+/* Editorial: portadas e informes firmados. Solo en tamaño grande. */
+[data-tipografia="editorial"]{
+  --fuente-titular:"Gloock","Bodoni MT",Georgia,serif;
+  --peso-titular:400; --caja-titular:none; --tracking-titular:-.01em;
+}
+/* Serif con carácter. */
+[data-tipografia="calida"]{
+  --fuente-titular:"Fraunces",Georgia,serif;
+  --peso-titular:900; --caja-titular:none; --tracking-titular:-.015em;
+}
+/* Apuesta alta: anchos mezclados. Evitar ante juntas conservadoras. */
+[data-tipografia="disruptiva"]{
+  --fuente-titular:"Syne","Archivo",sans-serif;
+  --peso-titular:800; --caja-titular:uppercase; --tracking-titular:-.005em;
+}
+/* Contemporánea de bajo riesgo. */
+[data-tipografia="contemporanea"]{
+  --fuente-titular:"Bricolage Grotesque","Archivo",sans-serif;
+  --peso-titular:700; --caja-titular:none; --tracking-titular:-.02em;
+}
+/* Serif fina de revista. */
+[data-tipografia="revista"]{
+  --fuente-titular:"Instrument Serif",Georgia,serif;
+  --peso-titular:400; --caja-titular:none; --tracking-titular:-.01em;
+}
+
+[data-tipografia] h1, [data-tipografia] .titular{
+  font-family:var(--fuente-titular); font-weight:var(--peso-titular);
+  text-transform:var(--caja-titular); letter-spacing:var(--tracking-titular);
+}
+[data-tipografia] .cifra, [data-tipografia] .num{
+  font-family:var(--fuente-cifra); font-variant-numeric:tabular-nums;
+}

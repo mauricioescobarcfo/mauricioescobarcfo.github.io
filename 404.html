@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página no encontrada · Mauricio Escobar</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --paper:#FCF9F2;
+    --panel:#F1E8D6;
+    --line:#DCCFB4;
+    --ink:#14110C;
+    --ink-soft:#6E675C;
+    --accent:#1400C8;
+    --amber:#B5822A;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:'Inter','Segoe UI',system-ui,sans-serif;
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;
+    display:flex;align-items:center;justify-content:center;
+    padding:clamp(24px,6vw,64px);
+  }
+  main{width:100%;max-width:640px}
+  .chip{
+    display:inline-block;background:var(--amber);color:var(--paper);
+    font-family:'JetBrains Mono',Consolas,monospace;font-size:11px;font-weight:700;
+    letter-spacing:.16em;text-transform:uppercase;padding:6px 12px;
+  }
+  h1{
+    font-family:'Archivo',system-ui,sans-serif;font-weight:700;
+    font-size:clamp(30px,5.5vw,52px);line-height:1.05;letter-spacing:-.022em;
+    margin:26px 0 0;text-wrap:balance;
+  }
+  h1 em{font-style:normal;color:var(--accent)}
+  p{margin:16px 0 0;color:var(--ink-soft);max-width:52ch}
+  .panel{
+    margin-top:34px;padding:26px 0 0;border-top:3px solid var(--amber);
+  }
+  .acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+  a.btn{
+    display:inline-block;text-decoration:none;
+    font-family:'Archivo',system-ui,sans-serif;font-weight:600;font-size:15px;
+    padding:12px 22px;border:1px solid var(--accent);
+    background:var(--accent);color:#FFFFFF;transition:opacity .15s ease;
+  }
+  a.btn:hover{opacity:.88}
+  a.btn-ghost{
+    display:inline-block;text-decoration:none;
+    font-family:'Archivo',system-ui,sans-serif;font-weight:600;font-size:15px;
+    padding:12px 22px;border:1px solid var(--line);
+    background:transparent;color:var(--ink);transition:background .15s ease;
+  }
+  a.btn-ghost:hover{background:var(--panel)}
+  .firma{
+    margin-top:40px;padding-top:18px;border-top:1px solid var(--line);
+    font-family:'JetBrains Mono',Consolas,monospace;font-size:12px;color:var(--ink-soft);
+  }
+</style>
+</head>
+<body>
+
+<main>
+  <span class="chip">Error 404</span>
+
+  <h1>Esta página <em>no</em> existe.</h1>
+
+  <div class="panel">
+    <p>El enlace puede estar viejo o mal escrito. Desde el inicio llegas a todo lo demás.</p>
+    <div class="acciones">
+      <a class="btn" href="/">Volver al inicio</a>
+      <a class="btn-ghost" href="https://www.linkedin.com/in/mauricio-escobar-bernales/">LinkedIn</a>
+    </div>
+  </div>
+
+  <div class="firma">Mauricio Escobar</div>
+</main>
+
+</body>
+</html>

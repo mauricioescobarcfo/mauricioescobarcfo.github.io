@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Marca MEB: Ultramar #1400C8 sobre papel Arena R1. Ver DESIGN.md.
+       Archivo es la tipografía de web y firma; Anton no se usa aquí. -->
+  <rect width="64" height="64" rx="14" fill="#1400C8"/>
+  <text x="32" y="44" font-family="Archivo, Inter, Segoe UI, system-ui, sans-serif"
+        font-size="30" font-weight="700" fill="#FCF9F2" text-anchor="middle">ME</text>
+</svg>

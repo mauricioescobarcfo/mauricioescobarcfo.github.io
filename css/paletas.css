@@ -1,0 +1,208 @@
+/*
+  Mauricio Escobar — paletas por tipo de publicación.
+  Capa de tokens que se monta SOBRE home.css: no repinta la landing, sólo
+  ofrece variantes para las piezas de publicación (tableros, carruseles,
+  slides, píldoras). Mundo claro pintado explícitamente en todas las
+  variantes salvo "pildora", que es un mundo oscuro también explícito.
+  NO hay bloques prefers-color-scheme: la paleta la elige la pieza con
+  data-paleta, nunca el sistema operativo.
+
+  Uso:  <body data-paleta="banco">  ·  <section data-paleta="fiduciaria">
+  Sin data-paleta, la pieza hereda la paleta institucional (la de la landing).
+*/
+
+/* ============ SEÑALES (constantes en todas las paletas) ============
+   Favorable es teal y desfavorable es ladrillo, los del manual
+   (DESIGN.md §1). Nunca semáforo verde/rojo. Ninguna paleta los reasigna. */
+:root{
+  --senal-ok:#14776B;        /* favorable, teal — 5.15:1 sobre papel (DESIGN.md §1) */
+  --senal-ok-suave:#E1EFEC;
+  --senal-alerta:#9C5142;    /* desfavorable, ladrillo — 5.44:1 sobre papel */
+  --senal-alerta-suave:#F4E6E2;
+  --senal-neutro:var(--ink-soft);
+}
+
+/* ============ PALETA INSTITUCIONAL (base, = landing) ============
+   Papel cálido + ultramar de interacción + ámbar estructural.
+   Se declara como variante nombrada para poder volver a ella desde
+   cualquier sección anidada. */
+:root,
+[data-paleta="institucional"]{
+  --rail:#181151;              /* barra lateral de tableros (DESIGN.md §8.1) */
+  --rail-texto:#C0B8FF;
+  --fondo:#FCF9F2;
+  --lienzo-pieza:#F6F1E4;
+  --panel:#F1E8D6;
+  --texto:#14110C;
+  --texto-suave:#6E675C;
+  --texto-tenue:#9C9280;
+  --filete:#DCCFB4;
+  --filete-fuerte:#C6BB98;
+  --acento:#1400C8;          /* interacción: enlaces, foco, CTA */
+  --acento-suave:#E8E5FF;
+  --estructura:#B5822A;      /* numeración, reglas, filetes de logro */
+  --estructura-suave:#F7EEDB;
+  /* Escala categórica validada en DESIGN.md §10 (ΔE >= 62,9; ΔL* >= 9,9).
+     En gráficos de área, #012937 va primero y el ultramar al final (§10.1). */
+  --serie-1:#1400C8; --serie-2:#866603; --serie-3:#9F046B;
+  --serie-4:#0B82F9; --serie-5:#012937;
+}
+
+/* ============ BANCO — "Ocean Breeze" ============
+   Sector bancario: tableros de utilidad, participación y ranking.
+   Azul institucional profundo; el ámbar sale y entra el azul medio como
+   tono estructural. */
+[data-paleta="banco"]{
+  --rail:#0B2A63;              /* barra lateral de tableros (DESIGN.md §8.1) */
+  --rail-texto:#DCEAF8;
+  --fondo:#FCF9F2;
+  --lienzo-pieza:#EFF4F9;
+  --panel:#E4EEF8;
+  --texto:#14110C;
+  --texto-suave:#5C6570;
+  --texto-tenue:#8C97A3;
+  --filete:#CBDCEB;
+  --filete-fuerte:#A9C6DE;
+  --acento:#0B3D91;          /* 9.55:1 sobre papel */
+  --acento-suave:#DCEAF8;
+  --estructura:#1F6FB2;      /* 5.02:1 sobre papel */
+  --estructura-suave:#E8F4FD;
+  --serie-1:#0B3D91; --serie-2:#1F6FB2; --serie-3:#3BA7F2;
+  --serie-4:#7FE7D6; --serie-5:#8C97A3;
+}
+
+/* ============ FIDUCIARIA — "Earthy Minimal" ============
+   Sector fiduciario: ingresos, ROE, comisiones. Registro sobrio, de
+   documento. El verde profundo es tono estructural de fondo y encabezado,
+   NUNCA la señal de "favorable" (esa sigue siendo --senal-ok). */
+[data-paleta="fiduciaria"]{
+  --rail:#2E3A2F;              /* barra lateral de tableros (DESIGN.md §8.1) */
+  --rail-texto:#E3E8E1;
+  --fondo:#FCF9F2;
+  --lienzo-pieza:#F4F1E9;
+  --panel:#E9E3D6;
+  --texto:#14110C;
+  --texto-suave:#635F55;
+  --texto-tenue:#948E80;
+  --filete:#D9D0BE;
+  --filete-fuerte:#BFB49C;
+  --acento:#2E3A2F;          /* 11.33:1 sobre papel */
+  --acento-suave:#E3E8E1;
+  --estructura:#A9542F;      /* terracota — 5.00:1 sobre papel */
+  --estructura-suave:#F4E7DE;
+  --serie-1:#2E3A2F; --serie-2:#6B7F5B; --serie-3:#A9542F;
+  --serie-4:#D9C9B2; --serie-5:#948E80;
+}
+
+/* ============ SEDPE — "Vibrant Sunset" ============
+   Sociedades especializadas en depósitos y pagos electrónicos: producto
+   digital, volumen transaccional. Ciruela y magenta; más contemporáneo que
+   las dos anteriores sin salirse del papel. */
+[data-paleta="sedpe"]{
+  --rail:#3A2A3A;              /* barra lateral de tableros (DESIGN.md §8.1) */
+  --rail-texto:#F7E6F2;
+  --fondo:#FCF9F2;
+  --lienzo-pieza:#F6EFF4;
+  --panel:#F0E2EC;
+  --texto:#14110C;
+  --texto-suave:#6A5C66;
+  --texto-tenue:#9B8C96;
+  --filete:#E3D2DE;
+  --filete-fuerte:#CDB4C5;
+  --acento:#8E2F76;          /* 7.09:1 sobre papel */
+  --acento-suave:#F7E6F2;
+  --estructura:#4D3A4D;      /* 9.85:1 sobre papel */
+  --estructura-suave:#EFE6EE;
+  --serie-1:#4D3A4D; --serie-2:#8E2F76; --serie-3:#BE5CA9;
+  --serie-4:#D59CC5; --serie-5:#9B8C96;
+}
+
+/* ============ PYMES — campaña "Información de PYMES en Supersociedades" ============
+   Tres vestidos para elegir; ocupan territorio que ningún otro tipo usa
+   (el ciruela ya es de SEDPE). "pymes" = grafito mientras no se elija. */
+[data-paleta="pymes"],
+[data-paleta="pymes-grafito"]{
+  --rail:#23211F; --rail-texto:#E7E2D8;
+  --fondo:#FCF9F2; --lienzo-pieza:#F3F1EC; --panel:#ECE8DF;
+  --texto:#14110C; --texto-suave:#625E57; --texto-tenue:#948F86;
+  --filete:#DAD5CB; --filete-fuerte:#BDB6A8;
+  --acento:#23211F;          /* grafito — 15.26:1 */
+  --acento-suave:#E7E2D8;
+  --estructura:#8F6410;      /* mostaza — 5.00:1 */
+  --estructura-suave:#F5ECD6;
+  --serie-1:#23211F; --serie-2:#8F6410; --serie-3:#B8B2A6;
+  --serie-4:#D9A21B; --serie-5:#5E5A53;
+}
+[data-paleta="pymes-petroleo"]{
+  --rail:#0E4D5C; --rail-texto:#DCEBEE;
+  --fondo:#FCF9F2; --lienzo-pieza:#EEF3F3; --panel:#E1ECEC;
+  --texto:#14110C; --texto-suave:#56625F; --texto-tenue:#8A9794;
+  --filete:#CFDCDA; --filete-fuerte:#A9C1BE;
+  --acento:#0E4D5C;          /* petróleo — 8.94:1; vecino del azul banco */
+  --acento-suave:#DCEBEE;
+  --estructura:#8F6410;      /* ocre — 5.00:1 */
+  --estructura-suave:#F5ECD6;
+  --serie-1:#0E4D5C; --serie-2:#8F6410; --serie-3:#7FA9B2;
+  --serie-4:#D9A21B; --serie-5:#8A9794;
+}
+[data-paleta="pymes-cobre"]{
+  --rail:#3A3835; --rail-texto:#F1E2D2;
+  --fondo:#FCF9F2; --lienzo-pieza:#F7F0E8; --panel:#F1E2D2;
+  --texto:#14110C; --texto-suave:#6B5F55; --texto-tenue:#9C8F84;
+  --filete:#E2D3C3; --filete-fuerte:#CBB49C;
+  --acento:#8A4A12;          /* cobre — 6.51:1; en gráficos roza el ladrillo */
+  --acento-suave:#F1E2D2;
+  --estructura:#3A3835;      /* grafito — 11.11:1 */
+  --estructura-suave:#E9E5E0;
+  --serie-1:#8A4A12; --serie-2:#3A3835; --serie-3:#D2A77E;
+  --serie-4:#7A8B99; --serie-5:#9C8F84;
+}
+
+/* ============ PÍLDORA — "Midnight Neon" ============
+   Formato corto: una cifra, una idea, alto contraste para el feed.
+   Único mundo oscuro del sistema, y es oscuro por decisión de formato,
+   no por preferencia del sistema. El ultramar de marca no sobrevive sobre
+   #0F172A (2.1:1), así que la interacción pasa al violeta claro. */
+[data-paleta="pildora"]{
+  --rail:#0B1220;              /* barra lateral de tableros (DESIGN.md §8.1) */
+  --rail-texto:#C4BCD8;
+  color-scheme:dark;
+  --fondo:#0F172A;
+  --lienzo-pieza:#0B1220;
+  --panel:#1B2540;
+  --texto:#EDE9FE;           /* 15.04:1 */
+  --texto-suave:#C4BCD8;     /* 9.80:1 */
+  --texto-tenue:#8F87A6;
+  --filete:#2A3557;
+  --filete-fuerte:#3C4A6B;
+  --acento:#A78BFA;          /* 6.56:1 sobre el fondo */
+  --acento-suave:#2A2050;
+  --estructura:#22D3EE;      /* 9.88:1 sobre el fondo */
+  --estructura-suave:#123240;
+  --serie-1:#7C3AED; --serie-2:#22D3EE; --serie-3:#A78BFA;
+  --serie-4:#EDE9FE; --serie-5:#8F87A6;
+  /* Las señales se aclaran: las versiones de papel no pasan sobre #0F172A. */
+  --senal-ok:#3FA795; --senal-ok-suave:#10302B;      /* 6.10:1 */
+  --senal-alerta:#C97F6E; --senal-alerta-suave:#3A211B; /* 5.73:1 */
+}
+
+/* ============ PUENTE CON home.css ============
+   home.css todavía lee los nombres legado (--paper, --ink, --accent…).
+   Cuando una pieza declara data-paleta, esos nombres pasan a resolverse
+   contra los alias por rol, de modo que los componentes existentes se
+   repintan sin tocar su CSS. */
+[data-paleta]{
+  --paper:var(--fondo);
+  --lienzo:var(--lienzo-pieza);
+  --ink:var(--texto);
+  --ink-soft:var(--texto-suave);
+  --ink-mute:var(--texto-tenue);
+  --line:var(--filete);
+  --line-strong:var(--filete-fuerte);
+  --accent:var(--acento);
+  --accent-soft:var(--acento-suave);
+  --amber:var(--estructura);
+  --amber-soft:var(--estructura-suave);
+  background:var(--lienzo-pieza);
+  color:var(--texto);
+}
