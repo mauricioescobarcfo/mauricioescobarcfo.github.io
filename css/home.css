@@ -902,3 +902,10 @@ footer{font-family:'Inter',-apple-system,'Segoe UI',system-ui,sans-serif;}
 @media (prefers-reduced-motion: reduce){
   .js [data-entra]{opacity:1; transform:none; transition:none;}
 }
+
+/* Informe de Power BI incrustado (decisión de Mauricio, 2026-10-01): el
+   informe vivo reemplaza a la captura. 16:10 deja ver la página completa con
+   la barra de navegación de Power BI; en móvil se alarga para que se lea. */
+.row .thumb-embed{aspect-ratio:16/10; margin-bottom:.75rem;}
+.row .thumb-embed iframe{width:100%; height:100%; border:0; display:block;}
+@media (max-width:640px){ .row .thumb-embed{aspect-ratio:4/5;} }
